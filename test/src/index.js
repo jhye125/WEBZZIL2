@@ -59,7 +59,18 @@ setInterval(tick,1000);*/
 
 //ReactDOM.render(<App />, document.getElementById('root'));
 //ReactDOM.render(<ComponentTest/>, document.getElementById('root'));
-ReactDOM.render(<StateAndLifecycle/>,document.getElementById('root'));
+//ReactDOM.render(<StateAndLifecycle/>,document.getElementById('root'));
 
+
+// 배열을 엘리먼트로 만들기
+const number = [1,2,3,4,5];
+const doubled = number.map((number) => number*2);
+
+// 여러개 컴포넌트 렌더링하기
+// map 함수를 사용해 number 배열을 반복 실행한다. 
+// 각 항목에 대해 <li> 엘리먼트를 반환하고 엘리먼트 배열의 결과를 listItems에 저장함
+const listItems = number.map((number)=><li>{number}</li>);
+
+ReactDOM.render(<ul>{listItems}</ul>,document.getElementById('root'));
 
 serviceWorker.unregister();

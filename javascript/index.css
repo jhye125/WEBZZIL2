@@ -1,0 +1,17 @@
+body{
+    background-color:powderblue;
+  }
+  
+  h1,h4 {
+    color : white;
+  }
+
+
+  .form,
+  .greetings{
+      display: none;
+  }
+
+  .showing{
+      display:block;
+  }
