@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios"; //axios 사용하기 위해서 추가
 import Movie from "./Movie";
+import "./App.css";
 
 // application은 render 함
 // 처음에는 isLoading : true => 화면에 Loading...이 뜸
@@ -40,18 +41,29 @@ class App extends React.Component{
     // const movies = axios.get("https://yts-proxy.now.sh/list_movies.json");
     this.getMovies();
   }
-  
+
   // map을 쓰면 무조건 return 생각하기
   render(){
     const { isLoading, movies} = this.state;
-    return <div>{ isLoading ? "Loading..." : movies.map(movie => {
-      console.log(movie);
-      return <Movie id={movie.id} 
-                    year={movie.year} 
-                    title={movie.title} 
-                    summary={movie.summary} 
-                    poster={movie.medium_cover_image}/>;
-    })}</div>;
+    return <section className = "container"> 
+        { isLoading ? (
+              <div className="loader">
+              <span className="loader__text">Loading...</span>
+              </div> 
+              ) : ( 
+              <div className="movies">
+                { movies.map(movie => (
+                    <Movie 
+                    key = {movie.id}
+                    id = {movie.id}
+                    year = {movie.year}
+                    title = {movie.title}
+                    summary = {movie.summary}
+                    poster = {movie.medium_cover_image}/>)
+                )}
+              </div>         
+              )}
+    </section>;
   }
 }
 
